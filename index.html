@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A responsive soil nutrient input form">
+    <title>Think Kisan: Soil Nutrient Analyser</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js library -->
+</head>
+<body>
+    <header>
+        <h2>Think Kisan</h2>
+        <h3>Soil Nutrient Analyser</h3>
+    </header><br>
+
+    <!-- Input Form Section -->
+    <form>
+        <table>
+            <tr>
+                <td><label for="nitrogen">Nitrogen (N):</label></td>
+                <td><input type="number" id="nitrogen" placeholder="Enter Nitrogen Value"></td>
+            </tr>
+            <tr>
+                <td><label for="phosphorus">Phosphorus (P):</label></td>
+                <td><input type="number" id="phosphorus" placeholder="Enter Phosphorus Value"></td>
+            </tr>
+            <tr>
+                <td><label for="potassium">Potassium (K):</label></td>
+                <td><input type="number" id="potassium" placeholder="Enter Potassium Value"></td>
+            </tr>
+            <tr>
+                <td><label for="ph">pH (0-14):</label></td>
+                <td><input type="number" id="ph" placeholder="Enter pH Value" min="0" max="14"></td>
+            </tr>
+        </table>
+        <button type="button" onclick="calculate()">Calculate Nutrients</button>
+    </form>
+
+    <!-- Result Section -->
+    <div id="result"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
