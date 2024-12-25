@@ -7,6 +7,15 @@
     <title>Think Kisan: Soil Nutrient Analyser</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script><!--pdf download library-->
+
+    <!-- Include html2canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+<!-- Include jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
 </head>
 <body>
     <header>
@@ -15,8 +24,12 @@
     </header><br>
 
     <!-- Input Form Section -->
-    <form>
+   <b> <form id="inputFeild">
         <table>
+            <tr>
+                <td><label for="nameResult" >Sample Name : </label></td>
+                <td><input type="text" id="nameResult" placeholder="Enter Sample name" required></td>
+            </tr>
             <tr>
                 <td><label for="nitrogen">Nitrogen (N):</label></td>
                 <td><input type="number" id="nitrogen" placeholder="Enter Nitrogen Value"></td>
@@ -34,14 +47,16 @@
                 <td><input type="number" id="ph" placeholder="Enter pH Value" min="0" max="14"></td>
             </tr>
         </table>
-        <button type="button" onclick="calculate()">Calculate Nutrients</button>
-    </form>
+       <button type="button" onclick="calculate()" >Calculate Nutrients</button>
+    </form> </b>
 
     <!-- Result Section -->
-    <div id="result"></div>
+    <div id="result"></div><br>
+
+    <div class="btn"><button id="pdfDownload" onclick="downloadPdf()">Download PDF</button> </div>       <br>
 
     <script src="script.js"></script>
 </body>
     <b>
-<footer style="text-align: center;" class="downloadapk"><a href="Think_Kisan.apk"></a>Download apk</footer></b>
+<footer ><a href="Think_Kisan.apk" class="btn"><button>Download APK</button> </a></footer></b>
 </html>
