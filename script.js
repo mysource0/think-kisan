@@ -1,15 +1,26 @@
+var downloadPDFButton = document.getElementById("pdfDownload");
+downloadPDFButton.style.display = "none";
 function calculate() {
-    // Read inputs from the form
     const nitrogen = parseFloat(document.getElementById("nitrogen").value) || 0;
     const phosphorus = parseFloat(document.getElementById("phosphorus").value) || 0;
     const potassium = parseFloat(document.getElementById("potassium").value) || 0;
     const ph = parseFloat(document.getElementById("ph").value) || 0;
+    const nameResult = document.getElementById("nameResult").value;
+
 
     // Validate input values
     if (ph < 0 || ph > 14) {
         alert("Please enter a valid pH value between 0 and 14.");
         return;
     }
+    if (!nameResult || !nitrogen || !phosphorus || !potassium || !ph) {
+        alert("Please fill in all fields.");
+        return;
+    }
+    // Read inputs from the form
+    downloadPDFButton.style.display = "block";
+
+
 
     // Perform calculations
     const organicCarbonResult = organic_Carbon(nitrogen);
@@ -24,21 +35,21 @@ function calculate() {
 
     // Display results in a clean table format with group headings and bar charts
     document.getElementById("result").innerHTML = `
-        <h3>Results</h3>
+        <h3 style="text-align:center">${nameResult} - Results</h3>
         
         <!-- Macro Nutrients Table and Bar Chart -->
         <div>
-            <h4>Macro Nutrients</h4>
-            <table border="1" cellpadding="10" cellspacing="0">
-                <thead>
+            <h4 style="font-size:16px;" >Macro Nutrients</h4>
+            <table border="1"  cellspacing="0">
+               <!--- <thead>
                     <tr>
-                        <th colspan="2">Macro Nutrients</th>
+                        <th colspan="0">Macro Nutrients</th>
                     </tr>
-                </thead>
+                </thead> --->
                 <tbody>
-                    <tr><td><b>Nitrogen (N):</b></td><td>${nitrogen.toFixed(2)}</td></tr>
-                    <tr><td><b>Phosphorus (P):</b></td><td>${phosphorus.toFixed(2)}</td></tr>
-                    <tr><td><b>Potassium (K):</b></td><td>${potassium.toFixed(2)}</td></tr>
+                    <tr><td><b>Nitrogen (N):</b></td><td>${nitrogen.toFixed(6)}</td></tr>
+                    <tr><td><b>Phosphorus (P):</b></td><td>${phosphorus.toFixed(6)}</td></tr>
+                    <tr><td><b>Potassium (K):</b></td><td>${potassium.toFixed(6)}</td></tr>
                 </tbody>
             </table>
             <canvas id="macroNutrientsChart"></canvas>
@@ -46,16 +57,16 @@ function calculate() {
 
         <!-- Primary & Secondary Nutrients Table and Bar Chart -->
         <div>
-            <h4>Primary & Secondary Nutrients</h4>
-            <table border="1" cellpadding="10" cellspacing="0">
-                <thead>
+            <h4 style="font-size:16px">Primary & Secondary Nutrients</h4>
+            <table border="1"  cellspacing="0">
+               <!--- <thead>
                     <tr>
-                        <th colspan="2">Primary & Secondary Nutrients</th>
+                        <th colspan="0">Primary & Secondary Nutrients</th>
                     </tr>
-                </thead>
+                </thead> --->
                 <tbody>
-                    <tr><td><b>Magnesium:</b></td><td>${magnesiumResult.toFixed(2)}</td></tr>
-                    <tr><td><b>Calcium:</b></td><td>${calciumResult.toFixed(2)}</td></tr>
+                    <tr><td><b>Magnesium:</b></td><td>${magnesiumResult.toFixed(6)}</td></tr>
+                    <tr><td><b>Calcium:</b></td><td>${calciumResult.toFixed(6)}</td></tr>
                 </tbody>
             </table>
             <canvas id="primarySecondaryNutrientsChart"></canvas>
@@ -63,19 +74,19 @@ function calculate() {
 
         <!-- Micronutrients Table and Bar Chart -->
         <div>
-            <h4>Micronutrients</h4>
-            <table border="1" cellpadding="10" cellspacing="0">
-                <thead>
+            <h4 style="font-size:16px">Micronutrients</h4>
+            <table border="1"  cellspacing="0">
+               <!--- <thead>
                     <tr>
-                        <th colspan="2">Micronutrients</th>
+                        <th colspan="0">Micronutrients</th>
                     </tr>
-                </thead>
+                </thead> --->
                 <tbody>
-                    <tr><td><b>Zinc:</b></td><td>${zincResult.toFixed(2)}</td></tr>
-                    <tr><td><b>Copper:</b></td><td>${copperResult.toFixed(2)}</td></tr>
-                    <tr><td><b>Iron:</b></td><td>${ironResult.toFixed(2)}</td></tr>
-                    <tr><td><b>Boron:</b></td><td>${boronResult.toFixed(2)}</td></tr>
-                    <tr><td><b>Molybdenum:</b></td><td>${molybdenumResult.toFixed(2)}</td></tr>
+                    <tr><td><b>Zinc:</b></td><td>${zincResult.toFixed(6)}</td></tr>
+                    <tr><td><b>Copper:</b></td><td>${copperResult.toFixed(6)}</td></tr>
+                    <tr><td><b>Iron:</b></td><td>${ironResult.toFixed(6)}</td></tr>
+                    <tr><td><b>Boron:</b></td><td>${boronResult.toFixed(6)}</td></tr>
+                    <tr><td><b>Molybdenum:</b></td><td>${molybdenumResult.toFixed(6)}</td></tr>
                 </tbody>
             </table>
             <canvas id="micronutrientsChart"></canvas>
@@ -83,16 +94,16 @@ function calculate() {
 
         <!-- Others Table and Bar Chart -->
         <div>
-            <h4>Others</h4>
-            <table border="1" cellpadding="10" cellspacing="0">
-                <thead>
+            <h4 style="font-size:16px">Others</h4>
+            <table border="1"  cellspacing="0">
+               <!--- <thead>
                     <tr>
-                        <th colspan="2">Others</th>
+                        <th colspan="0">Others</th>
                     </tr>
-                </thead>
+                </thead> --->
                 <tbody>
-                    <tr><td><b>Silicon:</b></td><td>${siliconResult.toFixed(2)}</td></tr>
-                    <tr><td><b>Organic Carbon:</b></td><td>${organicCarbonResult.toFixed(2)}</td></tr>
+                    <tr><td><b>Silicon:</b></td><td>${siliconResult.toFixed(6)}</td></tr>
+                    <tr><td><b>Organic Carbon:</b></td><td>${organicCarbonResult.toFixed(6)}</td></tr>
                 </tbody>
             </table>
             <canvas id="othersChart"></canvas>
@@ -108,7 +119,10 @@ function calculate() {
 
 // Function to create a bar chart
 function createBarChart(chartId, label, labels, data) {
-    new Chart(document.getElementById(chartId), {
+
+
+
+     new Chart(document.getElementById(chartId), {
         type: 'bar',
         data: {
             labels: labels,
@@ -124,13 +138,14 @@ function createBarChart(chartId, label, labels, data) {
             responsive: true,
             scales: {
                 x: { beginAtZero: true }
+            
             },
             plugins: {
                 legend: { position: 'top' },
                 tooltip: {
                     callbacks: {
                         label: function(tooltipItem) {
-                            return `${tooltipItem.label}: ${tooltipItem.raw.toFixed(2)}`;
+                            return `${tooltipItem.label}: ${tooltipItem.raw.toFixed(6)}`;
                         }
                     }
                 }
@@ -184,3 +199,117 @@ function boron(ph) {
 function molybdenum(ph) {
     return ph === 0 ? 0 : 0.01 + (0.007 * ph);
 }
+
+
+// download as pdf
+
+
+
+
+
+
+
+function downloadPdf() {
+    const resultContent = document.getElementById("result");
+    const sampleName = document.getElementById("nameResult").value; // Get the sample name from input
+
+    if (!sampleName) {
+        alert("Please enter a sample name.");
+        return; // Prevent download if the name is not entered
+    }
+
+    // Use the callback-style API for html2canvas
+    html2canvas(resultContent, {
+        onrendered: function (canvas) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Get the width and height of the content
+            const contentWidth = canvas.width;
+            const contentHeight = canvas.height;
+
+            // Define the PDF dimensions (A4 size: 210mm x 297mm)
+            const pdfWidth = 300;  // Custom width for PDF
+            const pdfHeight = 260; // Custom height for PDF
+
+            // Calculate the scale to fit content
+            const scaleX = pdfWidth / contentWidth;
+            const scaleY = pdfHeight / contentHeight;
+            const scale = Math.min(scaleX, scaleY); // Scale to maintain aspect ratio
+
+            // Calculate the final width and height of the content on the PDF
+            const finalWidth = contentWidth * scale;
+            const finalHeight = contentHeight * scale;
+
+            // Add the canvas image to the PDF with the calculated width and height
+            const imgData = canvas.toDataURL('image/png');
+            doc.addImage(imgData, 'PNG', 8, 8, finalWidth, finalHeight);
+
+            // Get current date and time for filename
+            const now = new Date();
+            const dateStr = now.toISOString().replace(/[-T:.Z]/g, "_"); // Format: YYYYMMDDHHMMSS
+
+            // Create the filename based on user input and current date/time
+            const fileName = `${sampleName}_result_at-Time_${dateStr}.pdf`;
+
+            // Save the generated PDF with dynamic filename
+            doc.save(fileName);
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+
+/*
+function downloadPdf() {
+    const resultContent = document.getElementById("result");
+    const nameResult = document.getElementById("nameResult").value;
+
+
+    // Use the callback-style API for html2canvas
+    html2canvas(resultContent, {
+        onrendered: function (canvas) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Get the width and height of the content
+            const contentWidth = canvas.width;
+            const contentHeight = canvas.height;
+
+            // Define the PDF dimensions (A4 size: 210mm x 297mm)
+            const pdfWidth = 300;  // A4 width in mm
+            const pdfHeight = 260; // A4 height in mm
+
+            // Calculate the scale to fit content
+            const scaleX = pdfWidth / contentWidth;
+            const scaleY = pdfHeight / contentHeight;
+            const scale = Math.min(scaleX, scaleY); // Scale to maintain aspect ratio
+
+            // Calculate the final width and height of the content on the PDF
+            const finalWidth = contentWidth * scale;
+            const finalHeight = contentHeight * scale;
+
+            // Add the canvas image to the PDF with the calculated width and height
+            const imgData = canvas.toDataURL('image/png');
+            doc.addImage(imgData, 'PNG', 8, 8, finalWidth, finalHeight);
+
+            // Save the generated PDF
+            // Get current date and time for filename
+            const now = new Date();
+            const dateStr = now.toISOString().replace(/[-T:.Z]/g, ""); // Format: YYYYMMDDHHMMSS
+
+            // Create the filename based on user input and current date/time
+            const fileName = `${sampleName}_result_${dateStr}.pdf`;
+
+            // Save the generated PDF with dynamic filename
+            doc.save(fileName);
+        }
+    });
+}*/
