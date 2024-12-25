@@ -32,13 +32,13 @@ form {
 }
 
 label {
-    font-size: 16px;
+    font-size: 13px;
     color: #333;
 }
 
 input {
     padding: 10px;
-    font-size: 16px;
+    font-size: 13px;
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -48,7 +48,7 @@ input {
 button {
     background-color: #4CAF50;
     color: white;
-    padding: 15px 32px;
+    padding: 12px 26px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
@@ -64,21 +64,32 @@ button:hover {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 th, td {
     text-align: left;
-    padding: 12px;
+    padding: 8px;
     border: 1px solid #ddd;
+    font-size: 12px;
 }
 
 th {
     background-color: #f2f2f2;
 }
+#result{
+    margin-left: 8%;
+    margin-right: 8%;
+}
+#inputFeild{
+    margin-left: 6%;
+    margin-right: 6%;
+}
 
 canvas {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-left: 8%;
+    margin-right: 8%;
 }
 
 header {
@@ -91,4 +102,13 @@ header {
     border-top: solid blue 1px;
     border-bottom-left-radius: 12%;
     border-bottom-right-radius: 12%;
+}
+
+.btn{
+    margin-left: 50%;
+}
+
+#macroNutrientsChart {
+    height: 140px;
+    width: 100%;
 }
