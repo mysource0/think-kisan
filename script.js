@@ -35,11 +35,11 @@ function calculate() {
 
     // Display results in a clean table format with group headings and bar charts
     document.getElementById("result").innerHTML = `
-        <h3 style="text-align:center">${nameResult} - Results</h3>
+        <h2 style="text-align:center">${nameResult} - Results</h3>
         
         <!-- Macro Nutrients Table and Bar Chart -->
         <div>
-            <h4 style="font-size:16px;" >Macro Nutrients</h4>
+            <h2 style="font-size:16px;" >Macro Nutrients</h4>
             <table border="1"  cellspacing="0">
                <!--- <thead>
                     <tr>
@@ -57,7 +57,7 @@ function calculate() {
 
         <!-- Primary & Secondary Nutrients Table and Bar Chart -->
         <div>
-            <h4 style="font-size:16px">Primary & Secondary Nutrients</h4>
+            <h2 style="font-size:18px">Primary & Secondary Nutrients</h4>
             <table border="1"  cellspacing="0">
                <!--- <thead>
                     <tr>
@@ -74,7 +74,7 @@ function calculate() {
 
         <!-- Micronutrients Table and Bar Chart -->
         <div>
-            <h4 style="font-size:16px">Micronutrients</h4>
+            <h2 style="font-size:18px">Micronutrients</h4>
             <table border="1"  cellspacing="0">
                <!--- <thead>
                     <tr>
@@ -94,7 +94,7 @@ function calculate() {
 
         <!-- Others Table and Bar Chart -->
         <div>
-            <h4 style="font-size:16px">Others</h4>
+            <h2 style="font-size:18px">Others</h4>
             <table border="1"  cellspacing="0">
                <!--- <thead>
                     <tr>
@@ -229,8 +229,8 @@ function downloadPdf() {
             const contentHeight = canvas.height;
 
             // Define the PDF dimensions (A4 size: 210mm x 297mm)
-            const pdfWidth = 300;  // Custom width for PDF
-            const pdfHeight = 260; // Custom height for PDF
+            const pdfWidth = 260;  // Custom width for PDF
+            const pdfHeight = 280; // Custom height for PDF
 
             // Calculate the scale to fit content
             const scaleX = pdfWidth / contentWidth;
@@ -243,7 +243,7 @@ function downloadPdf() {
 
             // Add the canvas image to the PDF with the calculated width and height
             const imgData = canvas.toDataURL('image/png');
-            doc.addImage(imgData, 'PNG', 8, 8, finalWidth, finalHeight);
+            doc.addImage(imgData, 'PNG', 10, 10, finalWidth, finalHeight);
 
             // Get current date and time for filename
             const now = new Date();
